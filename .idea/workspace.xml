@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a1e9c05-d131-4e6e-a121-38dda933f27b" name="Default Changelist" comment="New application storeLocationsApp has been added">
-      <change afterPath="$PROJECT_DIR$/storeLocationsApp/urls.py" afterDir="false" />
+    <list default="true" id="6a1e9c05-d131-4e6e-a121-38dda933f27b" name="Default Changelist" comment="Changes in urls files">
+      <change afterPath="$PROJECT_DIR$/templates/storeLocations.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/optimallocation/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimallocation/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimallocation/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimallocation/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storeLocationsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/storeLocationsApp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -26,6 +33,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/storeLocationsApp" />
@@ -72,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631614316504</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Changes in urls files">
+      <created>1631615286376</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1631615286376</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -91,6 +106,7 @@
     <MESSAGE value="New branch" />
     <MESSAGE value="Changes in DATABASES in setting.py" />
     <MESSAGE value="New application storeLocationsApp has been added" />
-    <option name="LAST_COMMIT_MESSAGE" value="New application storeLocationsApp has been added" />
+    <MESSAGE value="Changes in urls files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in urls files" />
   </component>
 </project>
