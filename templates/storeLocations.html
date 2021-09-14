@@ -10,8 +10,8 @@
      <label for="cars">Retailer:</label>
      <select id="retailers" name="retailers">
         <option disabled="true" selected>---Select---</option>
-        {% for results in retailers %}
-         <option>{{results.retailer_name}}</option>
+        {% for result in retailers %}
+         <option>{{result.retailer_name}}</option>
          {% endfor %}
      </select>
 </form>
