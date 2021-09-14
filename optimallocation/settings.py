@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'optimallocation.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'duproject',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
@@ -128,3 +128,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+GDAL_LIBRARY_PATH = r'C:\OSGeo4W64\bin\gdal303'
