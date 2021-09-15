@@ -7,11 +7,19 @@
 <body>
 <h1>Store Locations</h1>
 <form action="">
-     <label for="cars">Retailer:</label>
+     <label for="retailers">Retailer:</label>
      <select id="retailers" name="retailers">
-        <option disabled="true" selected>---Select---</option>
+        <option disabled="true" selected>---Select Retailer---</option>
         {% for result in retailers %}
          <option>{{result.retailer_name}}</option>
+         {% endfor %}
+     </select>
+     <br><br>
+     <label for="regions">Region:</label>
+     <select id="regions" name="regions">
+        <option disabled="true" selected>---Select Region---</option>
+        {% for result in regions %}
+         <option>{{result.region_name}}</option>
          {% endfor %}
      </select>
 </form>

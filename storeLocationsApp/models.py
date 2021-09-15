@@ -7,3 +7,8 @@ class retailers(models.Model):
     retailer_name=models.CharField(max_length=100)
     class Meta:
         db_table="retailers"
+
+class regions(models.Model):
+    region_name=models.CharField(max_length=100)
+    class Meta:
+        db_table="regions"
