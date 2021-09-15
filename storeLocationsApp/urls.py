@@ -18,6 +18,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.all_retailers, name='all_retailers'),
-    path('', views.all_regions, name='all_regions'),
-]
+    path('', views.get_data, name='get_data'),
+    ]
