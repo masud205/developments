@@ -7,4 +7,4 @@ from storeLocationsApp.models import retailers, regions
 def get_data(request):
     retailerobj = retailers.objects.all()
     regionobj = regions.objects.all()
-    return render(request, 'storeLocations.html',{"retailers":retailerobj, "regions":regionobj});
+    return render(request, 'storeLocations.html', {"retailers": retailerobj, "regions": regionobj});

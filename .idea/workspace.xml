@@ -4,7 +4,6 @@
     <list default="true" id="6a1e9c05-d131-4e6e-a121-38dda933f27b" name="Default Changelist" comment="Changes in models.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storeLocationsApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/storeLocationsApp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storeLocationsApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/storeLocationsApp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storeLocationsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/storeLocationsApp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631706977289</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Changes in models.py">
+      <created>1631739239291</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1631739239291</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
