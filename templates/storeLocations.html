@@ -24,6 +24,16 @@
          <option>{{result.region_name}}</option>
          {% endfor %}
      </select>
+
+    <br><br>
+
+     <label for="municipalities">Municipality:</label>
+     <select id="municipalities" name="municipalities">
+        <option disabled="true" selected>---Select Municipality---</option>
+        {% for result in municipalities %}
+         <option>{{result.municipality_name}}</option>
+         {% endfor %}
+     </select>
 </form>
 </body>
 </html>

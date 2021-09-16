@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6a1e9c05-d131-4e6e-a121-38dda933f27b" name="Default Changelist" comment="Changes in models.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storeLocationsApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/storeLocationsApp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storeLocationsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/storeLocationsApp/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/storeLocations.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/storeLocations.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631744313580</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Changes in the models.py">
+      <created>1631778408689</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1631778408689</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,6 +180,7 @@
     <MESSAGE value="Adding templates" />
     <MESSAGE value="Changes in html file" />
     <MESSAGE value="Changes in models.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes in models.py" />
+    <MESSAGE value="Changes in the models.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes in the models.py" />
   </component>
 </project>

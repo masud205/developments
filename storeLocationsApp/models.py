@@ -22,3 +22,16 @@ class regions(models.Model):
 
     class Meta:
         db_table = "regions"
+
+class municipalities(models.Model):
+    municipality_id = models.IntegerField(primary_key=True, default=3000)
+    municipality_code = models.CharField(max_length=10)
+    region = models.ForeignKey('regions', on_delete=models.SET_NULL, null=True, blank=True)
+    municipality_name = models.CharField(max_length=100)
+    municipality_area = models.DecimalField(max_digits=20, decimal_places=2, null=True, blank=True)
+    population = models.IntegerField(null=True, blank=True)
+    number_of_cars = models.IntegerField(null=True, blank=True)
+    avg_income = models.IntegerField(null=True, blank=True)
+
+    class Meta:
+        db_table = "municipalities"
