@@ -8,4 +8,5 @@ def get_data(request):
     retailerobj = retailers.objects.all()
     regionobj = regions.objects.all()
     municipalobj = municipalities.objects.all()
-    return render(request, 'storeLocations.html', {"retailers": retailerobj, "regions": regionobj, "municipalities": municipalobj});
+    return render(request, 'storeLocations.html', {"retailers": retailerobj, "regions": regionobj,
+                                                   "municipalities": municipalobj});
