@@ -76,7 +76,7 @@
 
      <label for="regions">Region</label><br>
      <select id="regions" name="regions" style="width: 150px;">
-        <option disabled="true" selected>---Select Region---</option>
+        <option selected>---Select Region---</option>
         {% for result in regions %}
          <option value="{{result.region_id}}">{{result.region_name}}</option>
         {% endfor %}
@@ -86,7 +86,7 @@
 
      <label for="municipalities">Municipality</label><br>
      <select id="municipalities" name="municipalities" style="width: 150px;">
-        <option disabled="true" selected>---Select Municipality---</option>
+        <option selected>---Select Municipality---</option>
         {% for result in municipalities %}
          <option value="{{result.region_id}}">{{result.municipality_name}}</option>
          {% endfor %}
