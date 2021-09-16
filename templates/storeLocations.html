@@ -66,10 +66,10 @@
 <form action="">
      <label for="retailers">Retailer</label><br>
      <select id="retailers" name="retailers" style="width: 150px;" sort="True">
-        <option disabled="true" selected>---Select Retailer---</option>
+        <option disabled="false" selected>---Select Retailer---</option>
         {% for result in retailers %}
          <option>{{result.retailer_name}}</option>
-         {% endfor %}
+        {% endfor %}
      </select>
 
      <br><br>
@@ -79,7 +79,7 @@
         <option disabled="true" selected>---Select Region---</option>
         {% for result in regions %}
          <option value="{{result.region_id}}">{{result.region_name}}</option>
-         {% endfor %}
+        {% endfor %}
      </select>
 
     <br><br>
