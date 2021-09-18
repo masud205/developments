@@ -1,5 +1,6 @@
-from django.db import models
-from django.db import connections
+#from django.db import models
+#from django.db import connections
+from django.contrib.gis.db import models
 
 # Create your models here.
 
@@ -35,3 +36,15 @@ class municipalities(models.Model):
 
     class Meta:
         db_table = "municipalities"
+
+class stores(models.Model):
+    store_id = models.IntegerField(primary_key=True, default=99999)
+    retailer = models.ForeignKey('retailers', on_delete=models.SET_NULL, null=True, blank=True)
+    municipality = models.ForeignKey('municipalities', on_delete=models.SET_NULL, null=True, blank=True)
+    store_name = models.CharField(max_length=100)
+    store_address = models.CharField(max_length=300)
+    store_lat = models.FloatField(null=True, blank=True)
+    store_long = models.FloatField(null=True, blank=True)
+
+    class Meta:
+        db_table = "stores"

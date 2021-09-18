@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6a1e9c05-d131-4e6e-a121-38dda933f27b" name="Default Changelist" comment="Changes in storeLocations.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimallocation/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimallocation/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storeLocationsApp/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storeLocationsApp/migrations/0002_municipalities.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storeLocationsApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/storeLocationsApp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/storeLocations.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/storeLocations.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -211,7 +215,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631794728179</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Changes in storeLocations.html">
+      <created>1631816630629</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1631816630629</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

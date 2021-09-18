@@ -12,6 +12,19 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import platform
+import pyutilib.subprocess.GlobalData
+
+OSGEO4W = r"C:\OSGeo4W"
+if '64' in platform.architecture()[0]:
+    OSGEO4W += "64"
+assert os.path.isdir(OSGEO4W), "Directory does not exist: " + OSGEO4W
+os.environ['OSGEO4W_ROOT'] = OSGEO4W
+os.environ['GDAL_DATA'] = OSGEO4W + r"\bin\gdal"
+os.environ['PROJ_LIB'] = OSGEO4W + r"\share\proj"
+os.environ['PATH'] = OSGEO4W + r"\bin;" + os.environ['PATH']
+
+pyutilib.subprocess.GlobalData.DEFINE_SIGNAL_HANDLERS_DEFAULT = False
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +51,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storeLocationsApp'
+    'storeLocationsApp',
+    'django.contrib.gis',
+    'leaflet'
 ]
 
 MIDDLEWARE = [
@@ -131,4 +146,4 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-GDAL_LIBRARY_PATH = r'C:\OSGeo4W64\bin\gdal303'
+#GDAL_LIBRARY_PATH = r'C:\OSGeo4W64\bin\gdal303'
