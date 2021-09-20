@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="6a1e9c05-d131-4e6e-a121-38dda933f27b" name="Default Changelist" comment="Changes in storeLocations.html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimallocation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimallocation/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/optimallocation/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimallocation/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storeLocationsApp/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storeLocationsApp/migrations/0002_municipalities.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storeLocationsApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/storeLocationsApp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/optimallocation/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/optimallocation/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storeLocationsApp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/storeLocationsApp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storeLocationsApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/storeLocationsApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storeLocationsApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/storeLocationsApp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/storeLocations.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/storeLocations.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +46,56 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\Rana_Backup_12062020\Study in Sweden\CO2 Project\project\developments\storeLocationsApp" />
     </key>
+  </component>
+  <component name="RunManager" selected="Python.views">
+    <configuration name="settings" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/optimallocation" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/optimallocation/settings.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\Python38\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/storeLocationsApp" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/storeLocationsApp/views.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.views" />
+        <item itemvalue="Python.settings" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -222,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631816630629</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Changes in storeLocations.html">
+      <created>1631964630899</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1631964630899</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -248,5 +307,16 @@
     <MESSAGE value="Changes in models.py" />
     <MESSAGE value="Changes in storeLocations.html" />
     <option name="LAST_COMMIT_MESSAGE" value="Changes in storeLocations.html" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/storeLocationsApp/views.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

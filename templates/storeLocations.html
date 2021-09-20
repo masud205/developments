@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 {% load leaflet_tags %}
 <html lang="en">
 <head>
@@ -48,6 +48,7 @@
     </script>
 
     <script>
+         //sort retailer names alphabetically
         $(function()
         {
         var options = $("#retailers option");
@@ -60,6 +61,7 @@
         $("#retailers").html(options);
         });
 
+         //sort region names alphabetically
         $(function()
         {
         var options = $("#regions option");
@@ -77,33 +79,47 @@
 </head>
 <body>
 <h1>Store Locations</h1>
-<form action="">
-     <label for="retailers">Retailer</label><br>
-     <select id="retailers" name="retailers" style="width: 170px;" sort="True">
+<form action="" method="POST">
+    {% csrf_token %}
+    <label for="retailers">Retailer</label><br>
+    <select id="retailers" name="retailers" style="width: 170px;" sort="True">
         <option disabled="true" selected>---Select Retailer---</option>
         {% for result in retailers %}
-         <option>{{result.retailer_name}}</option>
+        <option value="{{result.retailer_id}}">{{result.retailer_name}}</option>
         {% endfor %}
-     </select>
+    </select>
 
-     <br><br>
+    <br><br>
 
-     <label for="regions">Region</label><br>
-     <select id="regions" name="regions" style="width: 170px;">
+    <label for="regions">Region</label><br>
+    <select id="regions" name="regions" style="width: 170px;">
         <option selected>---Select Region---</option>
         {% for result in regions %}
         <option value="{{result.region_id}}">{{result.region_name}}</option>
         {% endfor %}
-     </select>
+    </select>
 
     <br><br>
 
-     <label for="municipalities">Municipality</label><br>
-     <select id="municipalities" name="municipalities" style="width: 170px;">
+    <label for="municipalities">Municipality</label><br>
+    <select id="municipalities" name="municipalities" style="width: 170px;">
         {% for result in municipalities %}
         <option value="{{result.region_id}}">{{result.municipality_name}}</option>
         {% endfor %}
-     </select>
+    </select>
+
+    <br><br><br>
+    <button type="submit">View Stores</button>
+    <table border="1">
+        <tr>
+            <th>Store Name</th>
+        </tr>
+        {% for result in find_stores %}
+        <tr>
+            <td>{{result.store_name}}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </form>
 
     <br>
@@ -116,24 +132,16 @@
             //var lat = "{{ city.geometry.y }}";
 
              // zoom to point & add it to map
-          // map.setView([60.494535, 15.399587],5);
-          // L.marker([60.494535, 15.399587]).addTo(map);
+           map.setView([60.494535, 15.399587],8);
+           L.marker([60.494535, 15.399587]).addTo(map);
 
-           for (let sl=0; sl<=50; sl++)
-           {
-           var lat = "{{ stores.store_lat }}";
-           var lon = "{{ stores.store_long }}";
-           map.setView([lat, lon],5);
-           L.marker([lat, lon]).addTo(map);
-           }
-
-            //map.setView([65.6186857, 22.0541646], map.getZoom(), {
-            //"animate": true,
-            //"pan": {
-            //"duration": 10
-             //}
-            //});
-            //L.marker([65.6186857, 22.0541646]).addTo(map);
+           //map.setView([65.6186857, 22.0541646], map.getZoom(), {
+          // "animate": true,
+         //  "pan": {
+         //  "duration": 10
+           //  }
+           // });
+           // L.marker([65.6186857, 22.0541646]).addTo(map);
 
         }
     </script>
