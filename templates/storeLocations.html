@@ -18,12 +18,12 @@
             $options=$municipalities.find('option');
             $regions.on('change', function()
             {
-
-                $municipalities.html($options.filter('[value="'+this.value+'"]'));
+                //get all municipalities with the class value same as region id
+                $municipalities.html($options.filter('[class="'+this.value+'"]'));
 
                 //append a default value to the municipalities dropdown list
                 $('#municipalities').append($('<option>', {
-                value: 0,
+                value: '---Select Municipality---',
                 text: '---Select Municipality---',
                 selected:true
                 }));
@@ -83,7 +83,7 @@
     {% csrf_token %}
     <label for="retailers">Retailer</label><br>
     <select id="retailers" name="retailers" style="width: 170px;" sort="True">
-        <option disabled="true" selected>---Select Retailer---</option>
+        <option selected>---Select Retailer---</option>
         {% for result in retailers %}
         <option value="{{result.retailer_id}}">{{result.retailer_name}}</option>
         {% endfor %}
@@ -104,37 +104,54 @@
     <label for="municipalities">Municipality</label><br>
     <select id="municipalities" name="municipalities" style="width: 170px;">
         {% for result in municipalities %}
-        <option value="{{result.region_id}}">{{result.municipality_name}}</option>
+        <option value="{{result.municipality_id}}" class="{{result.region_id}}">{{result.municipality_name}}</option>
         {% endfor %}
     </select>
 
     <br><br><br>
     <button type="submit">View Stores</button>
-    <table border="1">
-        <tr>
-            <th>Store Name</th>
-        </tr>
-        {% for result in find_stores %}
-        <tr>
-            <td>{{result.store_name}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</form>
+    <!--- <table border="1">
+         <tr>
+             <th>Store Name</th>
+             <th>Store Address</th>
+         </tr>
+         {% for result in find_stores %}
+         <tr>
+             <td>{{result.store_name}}</td>
+             <td>{{result.store_address}}</td>
+         </tr>
+         {% endfor %}
+     </table>-->
+
 
     <br>
     {% leaflet_map "main" callback="main_map_init" %}
     <script type="text/javascript">
-        function main_map_init (map, options)
-        {
-            // get point lat and lon
-            //var lon = "{{ city.geometry.x }}";
-            //var lat = "{{ city.geometry.y }}";
+    function main_map_init(map, options) {
+        // get point lat and lon
+        //var lon = "{{ city.geometry.x }}";
+        //var lat = "{{ city.geometry.y }}";
 
-             // zoom to point & add it to map
-           map.setView([60.494535, 15.399587],8);
-           L.marker([60.494535, 15.399587]).addTo(map);
+        // zoom to point & add it to map
+                
+        var v_stores = "{{ find_stores|safe }}";
+        document.write(v_stores[0]("fields").store_lat)
 
+        //var data = JSON.parse("{{ find_stores }}");
+        map.setView([60.494535, 15.399587], 8);
+        L.marker([60.494535, 15.399587]).addTo(map);
+        //document.write(data);
+
+           //  for (let coord in data)
+         //   {
+        //       map.setView(["{{ coord.store_lat }}", "{{ coord.store_long }}"], 8);
+        //       L.marker(["{{ coord.store_lat }}", "{{ coord.store_long }}"]).addTo(map);
+
+        //       map.setView([60.494535, 15.399587],8);
+              // L.marker([60.494535, 15.399587]).addTo(map);
+    //    }
+
+         
            //map.setView([65.6186857, 22.0541646], map.getZoom(), {
           // "animate": true,
          //  "pan": {
@@ -145,5 +162,6 @@
 
         }
     </script>
+</form>
 </body>
 </html>
