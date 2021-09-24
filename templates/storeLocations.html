@@ -7,39 +7,38 @@
     <meta charset="UTF-8">
     <title>Retailer Stores Locations </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin="" />
+    
     <script>
         //load municipalilties as per selected region
 
-        $(document).ready(function()
-        {
-        var $regions=$('#regions'),
-            $municipalities=$('#municipalities'),
-            $options=$municipalities.find('option');
-            $regions.on('change', function()
-            {
+        $(document).ready(function () {
+            var $regions = $('#regions'),
+                $municipalities = $('#municipalities'),
+                $options = $municipalities.find('option');
+            $regions.on('change', function () {
                 //get all municipalities with the class value same as region id
-                $municipalities.html($options.filter('[class="'+this.value+'"]'));
+                $municipalities.html($options.filter('[class="' + this.value + '"]'));
 
                 //append a default value to the municipalities dropdown list
                 $('#municipalities').append($('<option>', {
-                value: '---Select Municipality---',
-                text: '---Select Municipality---',
-                selected:true
+                    value: '---Select Municipality---',
+                    text: '---Select Municipality---',
+                    selected: true
                 }));
 
-        //sort municipality names alphabetically
-        $(function()
-        {
-        var options = $("#municipalities option");
-            options.sort(function(a,b)
-            {
-                if (a.text > b.text) return 1; // .text for text comparison
-                    else if (a.text < b.text) return -1;
-                else return 0
-            });
-        $("#municipalities").html(options);
-        });
+                //sort municipality names alphabetically
+                $(function () {
+                    var options = $("#municipalities option");
+                    options.sort(function (a, b) {
+                        if (a.text > b.text) return 1; // .text for text comparison
+                        else if (a.text < b.text) return -1;
+                        else return 0
+                    });
+                    $("#municipalities").html(options);
+                });
 
             }).trigger('change');
 
@@ -48,30 +47,26 @@
     </script>
 
     <script>
-         //sort retailer names alphabetically
-        $(function()
-        {
-        var options = $("#retailers option");
-            options.sort(function(a,b)
-            {
-             if (a.text > b.text) return 1; // .text for text comparison
+        //sort retailer names alphabetically
+        $(function () {
+            var options = $("#retailers option");
+            options.sort(function (a, b) {
+                if (a.text > b.text) return 1; // .text for text comparison
                 else if (a.text < b.text) return -1;
-             else return 0
+                else return 0
             });
-        $("#retailers").html(options);
+            $("#retailers").html(options);
         });
 
-         //sort region names alphabetically
-        $(function()
-        {
-        var options = $("#regions option");
-            options.sort(function(a,b)
-            {
-             if (a.text > b.text) return 1; // .text for text comparison
-                    else if (a.text < b.text) return -1;
+        //sort region names alphabetically
+        $(function () {
+            var options = $("#regions option");
+            options.sort(function (a, b) {
+                if (a.text > b.text) return 1; // .text for text comparison
+                else if (a.text < b.text) return -1;
                 else return 0
-             });
-        $("#regions").html(options);
+            });
+            $("#regions").html(options);
         });
 
     </script>
@@ -80,88 +75,93 @@
 <body>
 <h1>Store Locations</h1>
 <form action="" method="POST">
-    {% csrf_token %}
-    <label for="retailers">Retailer</label><br>
-    <select id="retailers" name="retailers" style="width: 170px;" sort="True">
-        <option selected>---Select Retailer---</option>
-        {% for result in retailers %}
-        <option value="{{result.retailer_id}}">{{result.retailer_name}}</option>
+    <div>
+        {% csrf_token %}
+        <label for="retailers">Retailer</label><br>
+        <select id="retailers" name="retailers" style="width: 170px;" sort="True">
+            <option selected>---Select Retailer---</option>
+            {% for result in retailers %}
+            <option value="{{result.retailer_id}}">{{result.retailer_name}}</option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <label for="regions">Region</label><br>
+        <select id="regions" name="regions" style="width: 170px;">
+            <option selected>---Select Region---</option>
+            {% for result in regions %}
+            <option value="{{result.region_id}}">{{result.region_name}}</option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+
+        <label for="municipalities">Municipality</label><br>
+        <select id="municipalities" name="municipalities" style="width: 170px;">
+            {% for result in municipalities %}
+            <option value="{{result.municipality_id}}" class="{{result.region_id}}">{{result.municipality_name}}</option>
+            {% endfor %}
+        </select>
+
+        <br><br><br>
+        <button id="viewstore" type="submit">View Stores</button>
+    </div>
+
+
+    <!--<table border="1">
+        <tr>
+            <th>Store Name</th>
+            <th>Store Address</th>
+        </tr>
+        {% for result in find_stores %}
+        <tr>
+            <td>{{result.store_name}}</td>
+            <td>{{result.store_address}}</td>
+        </tr>
         {% endfor %}
-    </select>
-
-    <br><br>
-
-    <label for="regions">Region</label><br>
-    <select id="regions" name="regions" style="width: 170px;">
-        <option selected>---Select Region---</option>
-        {% for result in regions %}
-        <option value="{{result.region_id}}">{{result.region_name}}</option>
-        {% endfor %}
-    </select>
-
-    <br><br>
-
-    <label for="municipalities">Municipality</label><br>
-    <select id="municipalities" name="municipalities" style="width: 170px;">
-        {% for result in municipalities %}
-        <option value="{{result.municipality_id}}" class="{{result.region_id}}">{{result.municipality_name}}</option>
-        {% endfor %}
-    </select>
-
-    <br><br><br>
-    <button type="submit">View Stores</button>
-    <!--- <table border="1">
-         <tr>
-             <th>Store Name</th>
-             <th>Store Address</th>
-         </tr>
-         {% for result in find_stores %}
-         <tr>
-             <td>{{result.store_name}}</td>
-             <td>{{result.store_address}}</td>
-         </tr>
-         {% endfor %}
-     </table>-->
+    </table>-->
 
 
     <br>
-    {% leaflet_map "main" callback="main_map_init" %}
-    <script type="text/javascript">
-    function main_map_init(map, options) {
-        // get point lat and lon
-        //var lon = "{{ city.geometry.x }}";
-        //var lat = "{{ city.geometry.y }}";
 
-        // zoom to point & add it to map
-                
-        var v_stores = "{{ find_stores|safe }}";
-        document.write(v_stores[0]("fields").store_lat)
+    <div id="map" style="width: 1300px; height: 600px;">
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+                integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+                crossorigin=""></script>
+        <script type="text/javascript">
+            // Initialize the leaflet map
+            const map = L.map('map');
 
-        //var data = JSON.parse("{{ find_stores }}");
-        map.setView([60.494535, 15.399587], 8);
-        L.marker([60.494535, 15.399587]).addTo(map);
-        //document.write(data);
+            // Get the tile layer from OpenStreetMaps
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
-           //  for (let coord in data)
-         //   {
-        //       map.setView(["{{ coord.store_lat }}", "{{ coord.store_long }}"], 8);
-        //       L.marker(["{{ coord.store_lat }}", "{{ coord.store_long }}"]).addTo(map);
+                // Specify the maximum zoom of the map
+             maxZoom: 20,
 
-        //       map.setView([60.494535, 15.399587],8);
-              // L.marker([60.494535, 15.399587]).addTo(map);
-    //    }
+                // Set the attribution for OpenStreetMaps
+              attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Set the view of the map
+            // with the latitude, longitude and the zoom value
+            map.setView([60.494535, 15.399587], 12);
+          //  L.marker([60.494535, 15.399587]).addTo(map);
+
+            var actuals = JSON.parse('{{ find_stores | safe }}')
+
+            //alert(actuals[0].fields.store_lat);
+            var i;
+            var iLength = actuals.length;
+            for (i = 0; i < iLength; i++) {
+                //alert(actuals[i].fields.store_lat);
+             L.marker([actuals[i].fields.store_lat, actuals[i].fields.store_long]).addTo(map);
+            }
 
          
-           //map.setView([65.6186857, 22.0541646], map.getZoom(), {
-          // "animate": true,
-         //  "pan": {
-         //  "duration": 10
-           //  }
-           // });
-           // L.marker([65.6186857, 22.0541646]).addTo(map);
-
-        }
-    </script>
+        </script>
+    </div>
 </form>
+
 </body>
 </html>
