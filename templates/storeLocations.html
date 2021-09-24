@@ -10,7 +10,12 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
           crossorigin="" />
-    
+    <style>
+        img.huechange 
+        {
+        filter: hue-rotate(40deg); 
+        }
+    </style>
     <script>
         //load municipalilties as per selected region
 
@@ -73,7 +78,7 @@
 
 </head>
 <body>
-<h1>Store Locations</h1>
+<h2>Store Locations</h2>
 <form action="" method="POST">
     <div>
         {% csrf_token %}
@@ -121,11 +126,21 @@
         </tr>
         {% endfor %}
     </table>-->
-
+    <div style="position: absolute; left: 250px; top: 65px;">
+        <table border="0">
+            <tr>
+                <td><b>Retailer:</b> {{selected_retailer.retailer_name}}</td>
+                <td></td>
+                <td><b>Region:</b> {{selected_region.region_name}}</td>
+                <td></td>
+                <td><b>Municipality:</b> {{selected_municipal.municipality_name}}</td>
+            </tr>
+        </table>
+    </div>
 
     <br>
 
-    <div id="map" style="width: 1300px; height: 600px;">
+    <div id="map" style="width: 1050px; height: 500px; position: absolute; left: 220px; top: 100px;">
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
                 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
                 crossorigin=""></script>
@@ -145,21 +160,38 @@
 
             // Set the view of the map
             // with the latitude, longitude and the zoom value
-            map.setView([60.494535, 15.399587], 12);
+            map.setView([62.38583179, 16.321998712], 4); //center coordinates of Sweden
           //  L.marker([60.494535, 15.399587]).addTo(map);
 
-            var actuals = JSON.parse('{{ find_stores | safe }}')
+            var json_stores = JSON.parse('{{ find_stores | safe }}')
 
-            //alert(actuals[0].fields.store_lat);
             var i;
-            var iLength = actuals.length;
-            for (i = 0; i < iLength; i++) {
-                //alert(actuals[i].fields.store_lat);
-             L.marker([actuals[i].fields.store_lat, actuals[i].fields.store_long]).addTo(map);
+            var iLength = json_stores.length;
+            for (i = 0; i < iLength; i++)
+            {
+                //alert(json_stores[i].fields.store_lat);
+                var marker = L.marker([json_stores[i].fields.store_lat, json_stores[i].fields.store_long]).addTo(map).bindTooltip(json_stores[i].fields.store_name.concat(', ', json_stores[i].fields.store_address));
+                marker._icon.classList.add("huechange"); //change the hue-rotate value to change the marker color
+                marker.on('click', function (e) {
+                    map.setView(e.latlng, 16);
+                });
             }
 
-         
         </script>
+    </div>
+
+    <div style="position: absolute; left: 250px; top: 65px;">
+        <table border="0">
+            <tr>
+                <td><b>Retailer:</b> {{selected_retailer.retailer_name}}</td>
+                <td></td>
+                <td><b>Region:</b> {{selected_region.region_name}}</td>
+                <td></td>
+                <td><b>Municipality:</b> {{selected_municipal.municipality_name}}</td>
+                <td></td>
+                <td><b>Number of Stores:</b> "+iLength+"</td>
+            </tr>
+        </table>
     </div>
 </form>
 
