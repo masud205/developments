@@ -114,30 +114,6 @@
     </div>
 
 
-    <!--<table border="1">
-        <tr>
-            <th>Store Name</th>
-            <th>Store Address</th>
-        </tr>
-        {% for result in find_stores %}
-        <tr>
-            <td>{{result.store_name}}</td>
-            <td>{{result.store_address}}</td>
-        </tr>
-        {% endfor %}
-    </table>-->
-    <div style="position: absolute; left: 250px; top: 65px;">
-        <table border="0">
-            <tr>
-                <td><b>Retailer:</b> {{selected_retailer.retailer_name}}</td>
-                <td></td>
-                <td><b>Region:</b> {{selected_region.region_name}}</td>
-                <td></td>
-                <td><b>Municipality:</b> {{selected_municipal.municipality_name}}</td>
-            </tr>
-        </table>
-    </div>
-
     <br>
 
     <div id="map" style="width: 1050px; height: 500px; position: absolute; left: 220px; top: 100px;">
@@ -163,7 +139,7 @@
             map.setView([62.38583179, 16.321998712], 4); //center coordinates of Sweden
           //  L.marker([60.494535, 15.399587]).addTo(map);
 
-            var json_stores = JSON.parse('{{ find_stores | safe }}')
+            var json_stores = JSON.parse('{{ find_stores_json | safe }}')
 
             var i;
             var iLength = json_stores.length;
@@ -180,19 +156,30 @@
         </script>
     </div>
 
+    {% if find_stores_str is not null %}
     <div style="position: absolute; left: 250px; top: 65px;">
-        <table border="0">
+        <table id="viewtbl" border="0">
             <tr>
-                <td><b>Retailer:</b> {{selected_retailer.retailer_name}}</td>
+                <td><b>Retailer:</b> {{selected_retailer.retailer_name}} </td>
                 <td></td>
-                <td><b>Region:</b> {{selected_region.region_name}}</td>
+                <td><b>Region:</b> {{selected_region.region_name}} </td>
                 <td></td>
-                <td><b>Municipality:</b> {{selected_municipal.municipality_name}}</td>
+                <td><b>Municipality:</b> {{selected_municipal.municipality_name}} </td>
                 <td></td>
-                <td><b>Number of Stores:</b> "+iLength+"</td>
+                <td><b>Number of Stores:</b> {{find_stores_str.count}} </td>
+                <td></td>
+                {% if find_stores_str.count > 0 %}
+                <td></td>
+                <td><a href="{% url 'export-excel' %}">Export to Excel</a></td>
+                {% endif %}
             </tr>
         </table>
     </div>
+    {% else %}
+    <div style="position: absolute; left: 250px; top: 65px; display: none">
+    </div>
+    {% endif %}
+
 </form>
 
 </body>

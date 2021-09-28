@@ -20,4 +20,5 @@ from . import views
 urlpatterns = [
 
     path('', views.get_dropdown_data, name='get_dropdown_data'),
+    path('export_excel', views.export_excel, name='export-excel'),
     ]
