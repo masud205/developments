@@ -5,15 +5,83 @@
     {% leaflet_js %}
     {% leaflet_css %}
     <meta charset="UTF-8">
-    <title>Retailer Stores Locations </title>
+    <title>Retailer Stores Locations</title>
+    <link rel="shortcut icon" href="/static/images/store.jpg" type="image/x-icon" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
           crossorigin="" />
     <style>
-        img.huechange 
+        /*change map marker color*/
+        img.huechange {
+            filter: hue-rotate(160deg);
+        }
+
+        /*header styles*/
+        .h2 {
+            padding: 0px;
+            text-align: left;
+            background: white;
+            color: dodgerblue;
+            font-size: 22px;
+            font-family: Georgia;
+        }
+
+        /*button style*/
+        .btn {
+            background-color: #535ac7;
+            border: none;
+            color: white;
+            padding: 5px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            /*margin: 4px 2px;*/
+            cursor: pointer;
+            border-radius: 6px;
+            opacity: 1;
+            /*border: 2px solid dodgerblue;*/
+        }
+
+            .btn:hover {
+                opacity: 0.5
+            }
+
+        /*drop down label styles*/
+        .drpdwnlbl {
+            font-family: Verdana;
+            font-size: 13px;
+            font-weight: bold;
+            color: black;
+            padding-left: 5px;
+        }
+
+        /*drop down styles*/
+        .drpdwn 
         {
-        filter: hue-rotate(40deg); 
+            width: 170px;
+            height: 25px;
+            /*padding-left: 10px;*/
+        }
+
+        /*map styles*/
+        .mapview 
+        {
+            width: 1050px; 
+            height: 600px; 
+            position: absolute; 
+            left: 210px; 
+            top: 60px;
+        }
+
+        /*drop down div styles*/
+        .divdrpdwn {
+            height: 600px;
+            width: 15%;
+            border: 1px solid #808080;
+            padding-left: 10px;
+            background-color: #e8e5e5;
         }
     </style>
     <script>
@@ -78,12 +146,13 @@
 
 </head>
 <body>
-<h2>Store Locations</h2>
+<h2 class="h2">Store Locations</h2>
 <form action="" method="POST">
-    <div>
+    <div class="divdrpdwn">
         {% csrf_token %}
-        <label for="retailers">Retailer</label><br>
-        <select id="retailers" name="retailers" style="width: 170px;" sort="True">
+        <br>
+        <label for="retailers" class="drpdwnlbl">Retailer</label><br>
+        <select id="retailers" name="retailers" class="drpdwn">
             <option selected>---Select Retailer---</option>
             {% for result in retailers %}
             <option value="{{result.retailer_id}}">{{result.retailer_name}}</option>
@@ -92,8 +161,8 @@
 
         <br><br>
 
-        <label for="regions">Region</label><br>
-        <select id="regions" name="regions" style="width: 170px;">
+        <label for="regions" class="drpdwnlbl">Region</label><br>
+        <select id="regions" name="regions" class="drpdwn">
             <option selected>---Select Region---</option>
             {% for result in regions %}
             <option value="{{result.region_id}}">{{result.region_name}}</option>
@@ -102,62 +171,63 @@
 
         <br><br>
 
-        <label for="municipalities">Municipality</label><br>
-        <select id="municipalities" name="municipalities" style="width: 170px;">
+        <label for="municipalities" class="drpdwnlbl">Municipality</label><br>
+        <select id="municipalities" name="municipalities" class="drpdwn">
             {% for result in municipalities %}
             <option value="{{result.municipality_id}}" class="{{result.region_id}}">{{result.municipality_name}}</option>
             {% endfor %}
         </select>
 
-        <br><br><br>
-        <button id="viewstore" type="submit">View Stores</button>
+        <br><br>
+        <button id="viewstore" type="submit" class="btn">View Stores</button>
     </div>
 
 
     <br>
 
-    <div id="map" style="width: 1050px; height: 500px; position: absolute; left: 220px; top: 100px;">
+    <div id="map" class="mapview">
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
                 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
                 crossorigin=""></script>
         <script type="text/javascript">
-            // Initialize the leaflet map
-            const map = L.map('map');
+            
+                // Initialize the leaflet map
+                const map = L.map('map');
 
-            // Get the tile layer from OpenStreetMaps
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                // Get the tile layer from OpenStreetMaps
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
-                // Specify the maximum zoom of the map
-             maxZoom: 20,
+                    // Specify the maximum zoom of the map
+                    maxZoom: 20,
 
-                // Set the attribution for OpenStreetMaps
-              attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+                    // Set the attribution for OpenStreetMaps
+                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
 
-            // Set the view of the map
-            // with the latitude, longitude and the zoom value
-            map.setView([62.38583179, 16.321998712], 4); //center coordinates of Sweden
-          //  L.marker([60.494535, 15.399587]).addTo(map);
+                // Set the view of the map
+                // with the latitude, longitude and the zoom value
+                //map.setView([62.38583179, 16.321998712], 5); //center coordinates of Sweden
+                map.setView([61, 16], 5); //default view
+                //  L.marker([60.494535, 15.399587]).addTo(map);
 
-            var json_stores = JSON.parse('{{ find_stores_json | safe }}')
+                var json_stores = JSON.parse('{{ find_stores_json | safe }}');
 
-            var i;
-            var iLength = json_stores.length;
-            for (i = 0; i < iLength; i++)
-            {
-                //alert(json_stores[i].fields.store_lat);
-                var marker = L.marker([json_stores[i].fields.store_lat, json_stores[i].fields.store_long]).addTo(map).bindTooltip(json_stores[i].fields.store_name.concat(', ', json_stores[i].fields.store_address));
-                marker._icon.classList.add("huechange"); //change the hue-rotate value to change the marker color
-                marker.on('click', function (e) {
-                    map.setView(e.latlng, 16);
-                });
-            }
-
+                var i;
+                var iLength = json_stores.length;
+                for (i = 0; i < iLength; i++) {
+                    //alert(json_stores[i].fields.store_lat);
+                    var marker = L.marker([json_stores[i].fields.store_lat, json_stores[i].fields.store_long]).addTo(map).bindTooltip(json_stores[i].fields.store_name.concat(', ', json_stores[i].fields.store_address));
+                    marker._icon.classList.add("huechange"); //change the hue-rotate value to change the marker color
+                    marker.on('click', function (e) {
+                        map.setView(e.latlng, 16);
+                    });
+                }
+           
         </script>
     </div>
 
     {% if find_stores_str is not null %}
-    <div style="position: absolute; left: 250px; top: 65px;">
+    <div style="position: absolute; left: 340px; top: 30px;">
         <table id="viewtbl" border="0">
             <tr>
                 <td><b>Retailer:</b> {{selected_retailer.retailer_name}} </td>
@@ -167,16 +237,18 @@
                 <td><b>Municipality:</b> {{selected_municipal.municipality_name}} </td>
                 <td></td>
                 <td><b>Number of Stores:</b> {{find_stores_str.count}} </td>
-                <td></td>
                 {% if find_stores_str.count > 0 %}
                 <td></td>
+                <td></td>
+                <td></td>
+                <td><img src="/static/images/excel.png" alt="Export Stores to Excel" width="20" height="25"></td>
                 <td><a href="{% url 'export-excel' %}">Export to Excel</a></td>
                 {% endif %}
             </tr>
         </table>
     </div>
     {% else %}
-    <div style="position: absolute; left: 250px; top: 65px; display: none">
+    <div style="position: absolute; left: 340px; top: 30px; display: none">
     </div>
     {% endif %}
 
