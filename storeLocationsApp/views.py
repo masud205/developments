@@ -88,7 +88,7 @@ def export_excel(request):
     font_style = xlwt.XFStyle()
     
     #print(store)
-    stores_info = store.select_related('retailer', 'municipality') ## joining with retailers and municipalities table using foreign keys retailer_id and municipality_id
+    stores_info = store.select_related('retailer', 'municipality').order_by('municipality') ## joining with retailers and municipalities table using foreign keys retailer_id and municipality_id
 
     rows = stores_info.values_list('store_id', 'retailer_id', 'municipality_id', 'store_name', 'retailer__retailer_name', 'municipality__municipality_name', 'store_address', 'store_lat', 'store_long')
 

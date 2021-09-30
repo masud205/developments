@@ -2,9 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\optimallocation",
+    "\\static\\images",
+    "\\static_files",
+    "\\static_files\\images",
     "\\storeLocationsApp",
     "\\templates"
   ],
-  "SelectedNode": "\\storeLocationsApp\\views.py",
+  "SelectedNode": "\\optimallocation\\settings.py",
   "PreviewInSolutionExplorer": false
 }
